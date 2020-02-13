@@ -10,7 +10,7 @@ class Engine {
         this.root = theRoot;
         // We create our hamburger.
         // Please refer to Player.js for more information about what happens when you create a player
-        this.player = new Player(this.root);
+        this.player = new Player(this.root, 'player');
         // Initially, we have no enemies in the game. The enemies property refers to an array
         // that contains instances of the Enemy class
         this.enemies = [];
@@ -34,6 +34,7 @@ class Engine {
         // Furthermore, if any enemy is below the bottom of our game, its destroyed property will be set. (See Enemy.js)
         this.enemies.forEach(enemy => {
             enemy.update(timeDiff);
+            
         });
         // We remove all the destroyed enemies from the array referred to by \`this.enemies\`.
         // We use filter to accomplish this.
@@ -45,15 +46,25 @@ class Engine {
         while (this.enemies.length < MAX_ENEMIES) {
             // We find the next available spot and, using this spot, we create an enemy.
             // We add this enemy to the enemies array 
+           
             const spot = nextEnemySpot(this.enemies);
-            this.enemies.push(new Enemy(this.root, spot));
+            this.enemies.push(new Enemy(this.root, spot, "enemy"));
+            
         }
+
+   
+
+     
+        // console.log(this.player);
         // We check if the player is dead. If he is, we alert the user
         // and return from the method (Why is the return statement important?)
         if (this.isPlayerDead()) {
-
-            window.alert("Game over");
+            
+                window.alert("Game over");
+                
+            
             return;
+           
         }
         // If the player is not dead, then we put a setTimeout to run the gameLoop in 20 milliseconds
         setTimeout(this.gameLoop, 20);
@@ -61,8 +72,23 @@ class Engine {
     // This method is not implemented correctly, which is why
     // the burger never dies. In your exercises you will fix this method.
     isPlayerDead = () => {
-        return false;
+        let isDead = false;
+
+        this.enemies.forEach(enemy => {
+        
+          if (enemy.x === this.player.x && enemy.y + ENEMY_HEIGHT >= this.player.y) {
+              isDead = true;
+
+          }
+        });
+        return isDead;
+
+
+  
+        
     }
+    
+    
 }
 
 //  CLASS ENGINE ENDS HERE. WHOLE THING IS THE CLASS.

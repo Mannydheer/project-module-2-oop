@@ -1,5 +1,6 @@
 // We create an instance of the Engine class. Looking at our index.html,
 // we see that it has a div with an id of \`"app"\`  
+//class create.
 const gameEngine = new Engine(document.getElementById("app"));
 // keydownHandler is a variable that refers to a function. The function has one parameter
 // (does the parameter name matter?) which is called event. As we will see below, this function
@@ -21,3 +22,13 @@ const keydownHandler = event => {
 document.addEventListener("keydown", keydownHandler);
 // We call the gameLoop method to start the game
 gameEngine.gameLoop();
+
+
+
+//NOTES:--------------------------------
+//this part of code is for kepresses of the hamburger. 
+//Listenening event.s
+
+//We are creating a new object called gameEngine. We are creating it based on our class
+//new Engine, which will hold all the properties that we will be making of
+//the class. 

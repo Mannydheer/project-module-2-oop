@@ -17,6 +17,7 @@ class Engine {
         // We add the background image to the game
         addBackground(this.root);
     }
+    // ------------------------------
 
     // The gameLoop will run every few milliseconds. It does several things
     //  - Updates the enemy positions
@@ -50,6 +51,7 @@ class Engine {
         // We check if the player is dead. If he is, we alert the user
         // and return from the method (Why is the return statement important?)
         if (this.isPlayerDead()) {
+
             window.alert("Game over");
             return;
         }
@@ -62,3 +64,5 @@ class Engine {
         return false;
     }
 }
+
+//  CLASS ENGINE ENDS HERE. WHOLE THING IS THE CLASS.

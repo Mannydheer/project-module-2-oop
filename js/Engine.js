@@ -17,8 +17,10 @@ class Engine {
         // We add the background image to the game
         addBackground(this.root);
 
-    // ------
+    // ------ Score board implement.
     this.scoreBoard = new ScoreBoard();
+    //------- Nyan eats the burger image to pop up with message. Pass the object theRoot which is the DIV
+    this.nyaneatsBurger = new Nyaneatsburger(theRoot);
         
     }
     // ------------------------------
@@ -59,9 +61,8 @@ class Engine {
 
         //score board increment.
         this.scoreBoard.incrementScore();
-
-
         this.scoreBoard.levelUp();
+        // 
 
    
 
@@ -70,8 +71,13 @@ class Engine {
         // We check if the player is dead. If he is, we alert the user
         // and return from the method (Why is the return statement important?)
         if (this.isPlayerDead()) {
-            
-                window.alert("Game over");
+
+            this.nyaneatsBurger.shownyanBurger();
+
+                setTimeout(() => {
+                    window.alert("Game over");
+                }, 3000);
+                // window.alert("Game over");
                 
             
             return;

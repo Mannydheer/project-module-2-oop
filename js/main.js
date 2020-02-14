@@ -18,6 +18,10 @@ const keydownHandler = event => {
         gameEngine.player.moveRight();
     }
 }
+//TIMER;
+
+
+
 // We add an event listener to document. document the ancestor of all DOM nodes in the DOM.
 document.addEventListener("keydown", keydownHandler);
 // We call the gameLoop method to start the game

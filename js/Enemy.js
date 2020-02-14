@@ -14,7 +14,7 @@ class Enemy extends Entity {
     // create an instance of this class.
     constructor(theRoot, enemySpot, type) {
 
-        super(theRoot, type)
+        super(theRoot, type, enemySpot)
         // When we create an Enemy instance, for example, new Enemy(someRoot, 3)
         // A new object is created and the constructor of the Enemy class is called. The context (the \`this\` keyword) is going
         // to be the new object. In these lines of code we see how to add 2 properties to this object: spot, root and gameHeight.
@@ -38,14 +38,14 @@ class Enemy extends Entity {
         // We create a new DOM element. The tag of this DOM element is img. It is the DOM node that will display the enemy image
         // to the user. When the enemy is no longer needed, we will use a reference to this DOM node to remove it from the game. This
         // is why we create a property that refers to it.
-        this.domElement = document.createElement('img');
-        // We give it a src attribute to specify which image to display.
-        this.domElement.src = './images/enemy.png';
-        // We modify the CSS style of the DOM node.
-        this.domElement.style.position = 'absolute';
-        this.domElement.style.left = `${this.x}px`;
-        this.domElement.style.top = `${this.y}px`;
-        this.domElement.style.zIndex = 5;
+        // this.domElement = document.createElement('img');
+        // // We give it a src attribute to specify which image to display.
+        // this.domElement.src = './images/enemy.png';
+        // // We modify the CSS style of the DOM node.
+        // this.domElement.style.position = 'absolute';
+        // this.domElement.style.left = `${this.x}px`;
+        // this.domElement.style.top = `${this.y}px`;
+        // this.domElement.style.zIndex = 5;
         // Show that the user can actually see the img DOM node, we append it to the root DOM node.
         theRoot.appendChild(this.domElement);
         this.speed = Math.random() / 2 + 0.25;

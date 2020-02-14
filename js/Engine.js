@@ -16,8 +16,12 @@ class Engine {
         this.enemies = [];
         // We add the background image to the game
         addBackground(this.root);
+    // ------
+        this.scoreBoard = new ScoreBoard;
     }
     // ------------------------------
+
+
 
     // The gameLoop will run every few milliseconds. It does several things
     //  - Updates the enemy positions
@@ -51,6 +55,8 @@ class Engine {
             this.enemies.push(new Enemy(this.root, spot, "enemy"));
             
         }
+
+        scoreBoard.incrementScore();
 
    
 

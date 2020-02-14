@@ -21,10 +21,14 @@ class Engine {
     this.scoreBoard = new ScoreBoard();
     //------- Nyan eats the burger image to pop up with message. Pass the object theRoot which is the DIV
     this.nyaneatsBurger = new Nyaneatsburger(theRoot);
+    //------- PLAY NYAN SONG.
+    this.playnyanSong = new Playnyansong(theRoot);
+
         
     }
     // ------------------------------
 
+    
 
     // The gameLoop will run every few milliseconds. It does several things
     //  - Updates the enemy positions
@@ -63,6 +67,7 @@ class Engine {
         this.scoreBoard.incrementScore();
         this.scoreBoard.levelUp();
         // 
+        this.playnyanSong.playnyanSong();
 
    
 
@@ -73,6 +78,9 @@ class Engine {
         if (this.isPlayerDead()) {
 
             this.nyaneatsBurger.shownyanBurger();
+            this.playnyanSong.stopnyanSong();
+
+            
 
                 setTimeout(() => {
                     window.alert("Game over");

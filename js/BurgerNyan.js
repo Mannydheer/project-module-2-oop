@@ -7,7 +7,7 @@ class Nyaneatsburger {
         this.nyanburgerPic.src = ("./images/nyaneatsBurger.gif");
         root.appendChild(this.nyanburgerPic);
         this.nyanburgerPic.id = 'nyanBurger';
-        this.nyanburgerPic.style.visibility = 'hidden';
+        this.nyanburgerPic.style.opacity = 0;
         //styling.
         this.nyanburgerPic.style.width = '530px';
         this.nyanburgerPic.style.height = '750px';
@@ -15,11 +15,14 @@ class Nyaneatsburger {
         this.nyanburgerPic.style.top = 0;
         this.nyanburgerPic.style.left = 0;
         //construct sound.
-        
+
     }
 
     shownyanBurger = () => {
         //this here is HOW I WANT TO MANIPULATE the img. What I want to do with it. 
-        this.nyanburgerPic.style.visibility = 'visible';
+        this.nyanburgerPic.style.opacity = 100;
+    }
+    hidenyanBurger = () => {
+        this.nyanburgerPic.style.opacity = 0;
     }
 }

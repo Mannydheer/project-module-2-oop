@@ -17,8 +17,14 @@ const keydownHandler = event => {
     if (event.code === "ArrowRight") {
         gameEngine.player.moveRight();
     }
+
+    if (event.code === "ArrowUp") {
+        gameEngine.player.shoot();
+    }
 }
 //TIMER;
+
+//add event listener for shooting.
 
 
 
@@ -30,24 +36,26 @@ let startButton = document.createElement('div');
 document.getElementById('app').appendChild(startButton);
 startButton.id = 'startBtn';
 startButton.innerText = "Start";
-startButton.style.cursor = 'pointer';
-startButton.style.padding = 0;
-startButton.style.margin = 0;
-startButton.style.position = 'absolute';
-startButton.style.textAlign = 'center';
-startButton.style.border = "solid black 2px"
-startButton.style.display = 'inline';
+
 // 
 
 let start = document.getElementById('startBtn');
 start.addEventListener('click', startGame);
 // -----------------------------------------
-//ADD ANOTHER EVENT LISTENER THATS ALWAYS LISTENING.
-//RESTART BUTTON. 
-let restartButton = document.createElement('div');
-document.getElementById('app').appendChild(restartButton);
-restartButton.id = 'restartBtn';
-restartButton.innerText = "Restart";
+//HEALTH BAR: 
+let health = document.createElement('div');
+document.getElementById('app').appendChild(health);
+health.id = "health";
+let healthcount = 0;
+
+//for loop for details of health bar. 
+for (let i = 0; i <= 70; i++) {
+    let healthbar = document.createElement('span')
+    document.getElementById('health').appendChild(healthbar);
+    healthbar.classList.add('healthBlock');
+    healthbar.innerText = 'o';
+}
+
 
 
 
@@ -58,6 +66,13 @@ function startGame() {
     start.removeEventListener('click', startGame);
     startButton.style.display = 'none';
 };
+
+// function restartGame() {
+//     location.reload();
+// }
+
+
+
 
 
 

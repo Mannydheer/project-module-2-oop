@@ -17,18 +17,38 @@ class Engine {
         // We add the background image to the game
         addBackground(this.root);
 
-    // ------ Score board implement.
-    this.scoreBoard = new ScoreBoard();
-    //------- Nyan eats the burger image to pop up with message. Pass the object theRoot which is the DIV
-    this.nyaneatsBurger = new Nyaneatsburger(theRoot);
-    //------- PLAY NYAN SONG.
-    this.playnyanSong = new Playnyansong(theRoot);
+        // ------ Score board implement.
+        this.scoreBoard = new ScoreBoard();
+        //------- Nyan eats the burger image to pop up with message. Pass the object theRoot which is the DIV
+        this.nyaneatsBurger = new Nyaneatsburger(theRoot);
+        //------- PLAY NYAN SONG.
+        this.playnyanSong = new Playnyansong(theRoot);
+        //------- LIVES.
+        // 
+        this.restartButton = document.createElement('div');
+        theRoot.appendChild(this.restartButton);
+        this.restartButton.id = 'restartBtn';
+        this.restartButton.innerText = 'Restart';
 
-        
+
     }
     // ------------------------------
+    // RESTART GAME!!!!
+    restartGame = () => {
+        for (let i = 0; i <= 70; i++) {
+            let healthbar = document.createElement('span')
+            document.getElementById('health').appendChild(healthbar);
+            healthbar.classList.add('healthBlock');
+            healthbar.innerText = 'o';
+        }
+        this.nyaneatsBurger.hidenyanBurger();
+        this.scoreBoard.score = 0;
+        this.scoreBoard.levelup.innerText = "Meow";
+        this.gameLoop();
+        //reset enemy counter;
+        MAX_ENEMIES = 3;
 
-    
+    }
 
     // The gameLoop will run every few milliseconds. It does several things
     //  - Updates the enemy positions
@@ -45,7 +65,8 @@ class Engine {
         // Furthermore, if any enemy is below the bottom of our game, its destroyed property will be set. (See Enemy.js)
         this.enemies.forEach(enemy => {
             enemy.update(timeDiff);
-            
+
+
         });
         // We remove all the destroyed enemies from the array referred to by \`this.enemies\`.
         // We use filter to accomplish this.
@@ -57,63 +78,66 @@ class Engine {
         while (this.enemies.length < MAX_ENEMIES) {
             // We find the next available spot and, using this spot, we create an enemy.
             // We add this enemy to the enemies array 
-           
+
             const spot = nextEnemySpot(this.enemies);
             this.enemies.push(new Enemy(this.root, spot, "enemy"));
-            
+
+
         }
 
         //score board increment.
         this.scoreBoard.incrementScore();
         this.scoreBoard.levelUp();
         // 
-        this.playnyanSong.playnyanSong();
+        // this.playnyanSong.playnyanSong();
 
-   
 
-     
-        // console.log(this.player);
+
+
         // We check if the player is dead. If he is, we alert the user
         // and return from the method (Why is the return statement important?)
         if (this.isPlayerDead()) {
 
+
             this.nyaneatsBurger.shownyanBurger();
             this.playnyanSong.stopnyanSong();
 
-            
+            let restart = document.getElementById('restartBtn');
+            restart.addEventListener('click', this.restartGame);
 
-                setTimeout(() => {
-                    window.alert("Game over");
-                }, 3000);
-                // window.alert("Game over");
-                
-            
+
+
             return;
-           
+
         }
+
+
         // If the player is not dead, then we put a setTimeout to run the gameLoop in 20 milliseconds
         setTimeout(this.gameLoop, 20);
     }
     // This method is not implemented correctly, which is why
     // the burger never dies. In your exercises you will fix this method.
+
+
     isPlayerDead = () => {
         let isDead = false;
-
         this.enemies.forEach(enemy => {
-        
-          if (enemy.x === this.player.x && enemy.y + ENEMY_HEIGHT >= this.player.y) {
-              isDead = true;
 
-          }
+            if (enemy.x === this.player.x && enemy.y + ENEMY_HEIGHT >= this.player.y) {
+                healthcount += 1;
+                let removeHealth = document.getElementById('health');
+                removeHealth.removeChild(removeHealth.childNodes[0])
+                isDead = false;
+                if (healthcount === 70) {
+
+                    isDead = true;
+
+                }
+
+            }
         });
         return isDead;
-
-
-  
-        
     }
-    
-    
 }
 
 //  CLASS ENGINE ENDS HERE. WHOLE THING IS THE CLASS.

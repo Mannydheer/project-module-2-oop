@@ -1,42 +1,105 @@
 <html>
-<head>    
-    <title>Nyan Kat</title> 
+
+<head>
+    <title>Nyan Kat</title>
 
     <style>
         #startBtn {
-            color: aqua;
-            font-size: 150px;
-
-        }
-        #startBtn:hover {
-            background-color: darkgrey;
-            
-        }
-        #restartBtn {
-            color: aqua;
+            color: white;
             font-size: 150px;
             position: absolute;
-            text-align: center;
+            top: 40px;
+            cursor: pointer;
+            padding: 20px 90px 20px 90px;
+            margin: 0;
+            border: 2px black solid;
+            display: inline;
+            background-color: black;
+            border-radius: 40%;
+
+
+        }
+
+        #startBtn:hover {
+            background-color: darkgrey;
+
+        }
+
+        #restartBtn {
+            color: white;
+            font-size: 150px;
+            position: absolute;
+            display: inline;
+            padding: 30px;
+            position: absolute;
+            bottom: 200px;
+            border: solid black 2px;
+            cursor: pointer;
+            border-radius: 40%;
+            background-color: black;
+
+        }
+
+        #restartBtn:hover {
+            background-color: darkgrey;
+        }
+
+        #lives {
+            position: absolute;
+        }
+
+        #health {
+            background-color: black;
+            position: absolute;
+            top: 10px;
+            left: 120px;
+        }
+
+        .healthBlock {
+            background-color: red;
+            color: red;
+            /* border: black solid 1px; */
+            font-size: 8px;
+            padding-bottom: 20px;
+
+        }
+
+        .lettuceClass {
+            width: 50px;
+            height: 50px;
+            display: inline;
+        }
+
+        #enemyCounter {
+            font-size: 50px;
+            color: black;
+            position: absolute;
+            bottom: 50px;
+            left: 550px;
         }
     </style>
-</head> 
-<body>    
+</head>
+
+<body>
     <!-- represents the DIV of the game -->
-    <div id="app"></div> 
-    <script src="/js/Score.js"></script> 
-    <script src="/js/BurgerNyan.js"></script> 
-    <script src="/js/Sound.js"></script> 
+    <div id="app"></div>
+    <script src="/js/Lives.js"></script>
+
+    <script src="/js/Score.js"></script>
+    <script src="/js/BurgerNyan.js"></script>
+    <script src="/js/Sound.js"></script>
 
 
 
-    <script src="js/Entity.js"></script> 
-    <script src="js/data.js"></script> 
-    <script src="js/Enemy.js"></script> 
-    <script src="js/engine-utilities.js"></script> 
-    <script src="js/Engine.js"></script> 
-    <script src="js/Player.js"></script> 
-    <script src="js/main.js"></script> 
-    
+    <script src="js/Entity.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/Enemy.js"></script>
+    <script src="js/engine-utilities.js"></script>
+    <script src="js/Engine.js"></script>
+    <script src="js/Player.js"></script>
+    <script src="js/main.js"></script>
 
-</body> 
-</html> 
+
+</body>
+
+</html>

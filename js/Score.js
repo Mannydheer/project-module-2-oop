@@ -1,12 +1,11 @@
-
-
- let score = 3;
+let score = 3;
 
 //ASK why span has to come before everything in the HTML.
 class ScoreBoard {
-  
+
     constructor() {
         this.score = 0;
+        this.levelup;
         let scoreSpan = document.createElement('span');
         document.getElementById('app').appendChild(scoreSpan);
         scoreSpan.id = 'scoreTarget';
@@ -23,10 +22,16 @@ class ScoreBoard {
         lvlSpan.style.fontSize = '50px';
         lvlSpan.style.color = 'white';
         lvlSpan.style.position = 'absolute';
-        lvlSpan.style.top = '10px';
-        lvlSpan.style.left = '400px';
+        lvlSpan.style.top = '50px';
+        lvlSpan.style.left = '375px';
 
-        
+        //ENEMY COUNTER:
+        let enemyCount = document.createElement('span');
+        document.getElementById('app').appendChild(enemyCount);
+        enemyCount.id = 'enemyCounter';
+
+
+
         //Have a "method" that you will call within this constructor. 
     }
 
@@ -39,29 +44,32 @@ class ScoreBoard {
     }
 
     levelUp = () => {
-        
+
         if (this.score % 100 === 0) {
-        let levelup = document.getElementById('lvlTarget')
-        let levelConvert = this.score/100;
-        
-        levelup.innerText = "Lvl " + levelConvert;
-            
-          
+            this.levelup = document.getElementById('lvlTarget')
+            let levelConvert = this.score / 100;
+            console.log(levelConvert);
+            MAX_ENEMIES += 1;
+            this.levelup.innerText = "Lvl " + levelConvert;
+
+            //
+            this.enemyCounter = document.getElementById('enemyCounter');
+            this.enemyCounter.innerHTML = `# of Enemies: ${MAX_ENEMIES}`;
         }
-       
+
         // return this.score;
     }
 
-   // 
-//    getScore = () => {
-// }
+    // 
+    //    getScore = () => {
+    // }
 
 
 
     //METHODS HERE.
 }
 
-    
+
 
 //When creating a class
 //define the attributes that you want : All the things that might change.

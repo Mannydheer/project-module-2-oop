@@ -1,5 +1,3 @@
-
-
 // There will only be one instance of this class. This instance will contain the
 // data and methods related to the burger that moves at the bottom of your screen
 class Player extends Entity {
@@ -8,21 +6,24 @@ class Player extends Entity {
     constructor(root, type) {
 
         super(root, type);
-          //player
+        //player
         // The x position starts off in the middle of the screen. Since this data is needed every time we move the player, we
         // store the data in a property of the instance. It represents the distance from the left margin of the browsing area to
         // the leftmost x position of the image.
         this.x = 3 * PLAYER_WIDTH;
-        
         // The y position never changes, so we don't need to store it in a property. It represents the y position of the top of the
         // hamburger. The y position is the distance from the top margin of the browsing area.
         this.y = GAME_HEIGHT - PLAYER_HEIGHT - 10;
         // We create a DOM node. We will be updating the DOM node every time we move the player, so we store a reference to the
         // DOM node in a property.
-     
+
+        //SHOOTING!
+
+
+
     }
 
-   
+
     // This method will be called when the user presses the left key. See in Engine.js
     // how we relate the key presses to this method
     moveLeft() {
@@ -30,7 +31,7 @@ class Player extends Entity {
             this.x = this.x - PLAYER_WIDTH;
         }
         this.domElement.style.left = `${this.x}px`;
-        
+
     }
     // We do the same thing for the right key. See Engine.js to see when this happens.
     moveRight() {
@@ -38,7 +39,31 @@ class Player extends Entity {
             this.x = this.x + PLAYER_WIDTH;
         }
         this.domElement.style.left = `${this.x}px`;
+
+
     }
+
+    shoot() {
+
+
+        let lettuceShow = document.createElement('img');
+        lettuceShow.classList.add('lettuceClass');
+        lettuceShow.src = 'images/Vegetable-106-512.png';
+        document.getElementById('app').appendChild(lettuceShow);
+        lettuceShow.style.position = 'absolute';
+        lettuceShow.style.left = `${this.x}px`;
+        lettuceShow.style.top = `${this.y - 50}px`;
+
+        let lettuceProgress = 0;
+        setInterval(() => {
+            lettuceProgress += 1;
+            lettuceShow.style.top = `${this.y - 50 - lettuceProgress}px`;
+
+
+        }, 10);
+
+    }
+
 }
 
 

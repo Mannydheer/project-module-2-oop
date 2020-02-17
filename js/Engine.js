@@ -90,7 +90,7 @@ class Engine {
         this.scoreBoard.levelUp();
         // 
         //PLAY SONG!!!
-        // this.playnyanSong.playnyanSong();
+        this.playnyanSong.playnyanSong();
 
 
         this.enemies.forEach(enemy => {
@@ -113,8 +113,7 @@ class Engine {
 
             this.nyaneatsBurger.shownyanBurger();
             this.playnyanSong.stopnyanSong();
-            let menu = document.getElementById('instruction');
-            menu.style.display = 'none';
+
 
             let restart = document.getElementById('restartBtn');
             restart.addEventListener('click', this.restartGame);

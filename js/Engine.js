@@ -96,7 +96,6 @@ class Engine {
         //PLAY SONG!!!
         this.playnyanSong.playnyanSong();
 
-        // console.log(bulletHolder.lettucePositionX);
 
 
         this.enemies.forEach(enemy => {

@@ -12,6 +12,7 @@ class Enemy extends Entity {
     // and the 2 parameters provide important information, we must supply 2 arguments to "new" every time we
     // create an instance of this class.
     constructor(theRoot, enemySpot, type) {
+        //this.enemyId = enemySpot
 
         super(theRoot, type, enemySpot)
         // When we create an Enemy instance, for example, new Enemy(someRoot, 3)

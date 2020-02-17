@@ -8,12 +8,17 @@ class Engine {
         // We need the DOM element every time we create a new enemy so we
         // store a reference to it in a property of the instance.
         this.root = theRoot;
+
+        // lettuce: 
+
         // We create our hamburger.
         // Please refer to Player.js for more information about what happens when you create a player
         this.player = new Player(this.root, 'player');
         // Initially, we have no enemies in the game. The enemies property refers to an array
         // that contains instances of the Enemy class
         this.enemies = [];
+        //
+
         // We add the background image to the game
         addBackground(this.root);
 
@@ -29,6 +34,7 @@ class Engine {
         theRoot.appendChild(this.restartButton);
         this.restartButton.id = 'restartBtn';
         this.restartButton.innerText = 'Restart';
+
 
 
     }
@@ -81,8 +87,6 @@ class Engine {
 
             const spot = nextEnemySpot(this.enemies);
             this.enemies.push(new Enemy(this.root, spot, "enemy"));
-
-
         }
 
         //score board increment.
@@ -92,16 +96,30 @@ class Engine {
         //PLAY SONG!!!
         this.playnyanSong.playnyanSong();
 
+        // console.log(bulletHolder.lettucePositionX);
+
 
         this.enemies.forEach(enemy => {
 
-            if (`${enemy.x}px` === this.player.lettucePositionX && `${enemy.y}px` >= this.player.lettucePositionY) {
-                this.player.lettuceShow.style.visibility = 'hidden';
-                enemy.domElement.style.display = 'none';
-                this.player.lettucePositionY = 0;
+            this.player.bulletHolder.forEach(bullet => {
+
+                if (`${enemy.x}px` === bullet.lettucePositionX && `${enemy.y}px` >= bullet.lettucePositionY) {
+                    let enemyPosition = this.enemies.indexOf(enemy);
+                    this.enemies.splice(enemyPosition, 1);
+                    // this.player.lettuceShow.style.visibility = 'hidden';
+                    enemy.domElement.style.display = 'none';
+                    //
+                    let bulletPosition = this.player.bulletHolder.indexOf(bullet);
+                    this.player.bulletHolder.splice(bulletPosition, 1);
+                    bullet.lettuceShow.style.display = 'none';
 
 
-            }
+                }
+
+
+            });
+
+
         });
 
 

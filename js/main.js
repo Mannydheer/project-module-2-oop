@@ -20,10 +20,11 @@ const keydownHandler = event => {
 
     if (event.code === "ArrowUp") {
         gameEngine.player.shoot();
+        // gameEngine.bulletHolder.push(new Lettuce(gameEngine.player.x, gameEngine.player.y))
+
     }
 }
 //TIMER;
-
 //add event listener for shooting.
 
 

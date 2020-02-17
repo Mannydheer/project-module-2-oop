@@ -82,7 +82,7 @@ class Engine {
         });
         // We need to perform the addition of enemies until we have enough enemies.
         while (this.enemies.length < MAX_ENEMIES) {
-            // We find the next available spot and, using this spot, we create an enemy.
+            // We find the next available spot and, using hthis spot, we create an enemy.
             // We add this enemy to the enemies array 
 
             const spot = nextEnemySpot(this.enemies);

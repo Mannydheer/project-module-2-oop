@@ -18,3 +18,7 @@ let MAX_ENEMIES = 3;
 // These constants represent the player width and height.
 const PLAYER_WIDTH = 75;
 const PLAYER_HEIGHT = 54;
+
+// These constants represent the lettuce WIDTH and HEIGHT. 
+// const LETTUCE_WIDTH = 50;
+// const LETTUCE_HEIGHT = 50;

@@ -23,7 +23,7 @@ class ScoreBoard {
         lvlSpan.style.color = 'white';
         lvlSpan.style.position = 'absolute';
         lvlSpan.style.top = '50px';
-        lvlSpan.style.left = '375px';
+        lvlSpan.style.left = '300px';
 
         //ENEMY COUNTER:
         let enemyCount = document.createElement('span');
@@ -48,7 +48,6 @@ class ScoreBoard {
         if (this.score % 100 === 0) {
             this.levelup = document.getElementById('lvlTarget')
             let levelConvert = this.score / 100;
-            console.log(levelConvert);
             MAX_ENEMIES += 1;
             this.levelup.innerText = "Lvl " + levelConvert;
 

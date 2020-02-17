@@ -45,19 +45,22 @@ class Player extends Entity {
 
     shoot() {
 
+        //creates my lettuce
+        this.lettuceShow = document.createElement('img');
+        this.lettuceShow.classList.add('lettuceClass');
+        this.lettuceShow.src = 'images/Vegetable-106-512.png';
+        document.getElementById('app').appendChild(this.lettuceShow);
+        this.lettuceShow.style.position = 'absolute';
+        this.lettuceShow.style.left = this.x;
+        this.lettuceShow.style.top = this.y - 50;
 
-        let lettuceShow = document.createElement('img');
-        lettuceShow.classList.add('lettuceClass');
-        lettuceShow.src = 'images/Vegetable-106-512.png';
-        document.getElementById('app').appendChild(lettuceShow);
-        lettuceShow.style.position = 'absolute';
-        lettuceShow.style.left = `${this.x}px`;
-        lettuceShow.style.top = `${this.y - 50}px`;
 
         let lettuceProgress = 0;
-        setInterval(() => {
+        let timer = setInterval(() => {
             lettuceProgress += 1;
-            lettuceShow.style.top = `${this.y - 50 - lettuceProgress}px`;
+            this.lettuceShow.style.top = this.y - 50 - lettuceProgress;
+            this.lettucePositionY = this.lettuceShow.style.top;
+            this.lettucePositionX = this.lettuceShow.style.left;
 
 
         }, 10);

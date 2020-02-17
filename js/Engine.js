@@ -89,8 +89,20 @@ class Engine {
         this.scoreBoard.incrementScore();
         this.scoreBoard.levelUp();
         // 
+        //PLAY SONG!!!
         // this.playnyanSong.playnyanSong();
 
+
+        this.enemies.forEach(enemy => {
+
+            if (`${enemy.x}px` === this.player.lettucePositionX && `${enemy.y}px` >= this.player.lettucePositionY) {
+                this.player.lettuceShow.style.visibility = 'hidden';
+                enemy.domElement.style.display = 'none';
+                this.player.lettucePositionY = 0;
+
+
+            }
+        });
 
 
 
@@ -101,6 +113,8 @@ class Engine {
 
             this.nyaneatsBurger.shownyanBurger();
             this.playnyanSong.stopnyanSong();
+            let menu = document.getElementById('instruction');
+            menu.style.display = 'none';
 
             let restart = document.getElementById('restartBtn');
             restart.addEventListener('click', this.restartGame);
@@ -110,6 +124,8 @@ class Engine {
             return;
 
         }
+
+        //method
 
 
         // If the player is not dead, then we put a setTimeout to run the gameLoop in 20 milliseconds

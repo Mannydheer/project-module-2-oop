@@ -50,11 +50,19 @@ let healthcount = 0;
 
 //for loop for details of health bar. 
 for (let i = 0; i <= 70; i++) {
-    let healthbar = document.createElement('span')
+    let healthbar = document.createElement('span');
     document.getElementById('health').appendChild(healthbar);
     healthbar.classList.add('healthBlock');
     healthbar.innerText = 'o';
 }
+
+
+// INSTRUCTIOMS
+let instruction = document.createElement('div');
+document.getElementById('app').appendChild(instruction);
+instruction.id = 'instruction';
+instruction.innerHTML = 'Welcome to Burger Eats Cats: Instructions!!!' + 'Move with LEFT and RIGHT arrow KEYS. Shoot with UP arrow key (Sorry if it doesnt work too well).' +
+    'You have a health bar and the number of enemies increase as you LVL up!';
 
 
 
@@ -65,6 +73,8 @@ function startGame() {
     gameEngine.gameLoop();
     start.removeEventListener('click', startGame);
     startButton.style.display = 'none';
+    let menu = document.getElementById('instruction');
+    menu.style.display = 'none';
 };
 
 // function restartGame() {
